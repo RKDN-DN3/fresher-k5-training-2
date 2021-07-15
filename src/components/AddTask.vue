@@ -26,11 +26,10 @@ export default {
         addTask(e){
             e.preventDefault();
             const newTask={
-                id: this.tasks?.lenght+1 ,
+                id: this.tasks.length+ 1 ,
                 title: this.title,
                 completed: false
             }
-            console.log("tassk", newTask)
             this.$emit('add-task',newTask);
             this.title = '';
         }

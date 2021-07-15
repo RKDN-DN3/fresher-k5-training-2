@@ -39,11 +39,9 @@ export default {
   },
   methods:{
     deleteTask(taskid){
-      console.log("taskid", taskid);
       this.tasks = this.tasks.filter(task => task.id !== taskid)
     },
     addTasks(newTask){
-      console.log("new task", newTask)
         this.tasks=[...this.tasks,newTask]
     }
   }

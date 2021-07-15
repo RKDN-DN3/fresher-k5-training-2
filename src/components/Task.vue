@@ -1,8 +1,8 @@
 <template>
     <div v-if="task" class="row">
-        <div class="col-md-10">
-            <input type="checkbox" :id="task.id" v-model="task.completed" class="checkcomplete"/>
-            <label>{{task.title}}</label>
+        <div class="col-md-10" v-bind:class="{'checkcomplete':task.completed}">
+           <!--  <input type="checkbox" :id="task.id" v-model="task.completed" class="checkcomplete"/> -->
+            <P v-on:click="markComplete">{{task.title}}</P>
         </div>
         
         <button class="col-md-1 btn btn-danger" variant="danger" type="button"
@@ -16,12 +16,20 @@
 
 <script>
 export default {
-    props:["task"]
+    props:["task"],
+    methods:{
+        markComplete(){
+            this.task.completed = !this.task.completed
+            console.log("status",this.task.completed)
+        }
+    }
+
 }
 </script>
 
 <style>
     .checkcomplete{
-        margin-right: 15px;
+        font-weight: bold;
+        text-decoration:line-through ;
     }
 </style>
