@@ -4,17 +4,10 @@
           Todo list
       </div>
       <b-form class="form-size">
-          <b-form-row>
-              <b-form-input class="col-10" id="inline-form-input-username" placeholder="Add new task todo"></b-form-input>
-            <b-button class="col-2" variant="success"> 
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
-                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                    </svg> Add Task
-            </b-button>
-            </b-form-row>
-            <ul>
-                <li v-for="task in tasks" :key="task.id">
-                    <task v-bind:task="task"/>
+            <add-task-vue v-on:add-task="addTasks" v-bind:tasks="tasks"/>
+            <ul v-if="tasks">
+                <li v-for="task in tasks" v-bind:key="task.id">
+                    <task v-bind:task="task" @deleted="deleteTask" />
                 </li>
             </ul>
     </b-form>
@@ -22,13 +15,38 @@
 </template>
 
 <script>
+import AddTaskVue from './AddTask.vue';
 import Task from './Task.vue'
+// import taskData from '../database/TaskData'
+
 export default {
     name: 'TaskList',
-    props:['tasks'],
     components:{
-        Task
+        Task,
+        AddTaskVue
+    },
+    data(){
+    return{
+      newTodo :'',
+      tasks: [
+    {id:1, title:'Go Market', completed: false},
+    {id:2, title:'Cook food', completed:false},
+    {id:3, title:'Clean up room', completed:false},
+    {id:4, title:'Clean PC', completed: false},
+    ]
     }
+    
+  },
+  methods:{
+    deleteTask(taskid){
+      console.log("taskid", taskid);
+      this.tasks = this.tasks.filter(task => task.id !== taskid)
+    },
+    addTasks(newTask){
+      console.log("new task", newTask)
+        this.tasks=[...this.tasks,newTask]
+    }
+  }
 }
 </script>
 

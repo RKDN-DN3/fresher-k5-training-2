@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="wrapper">
-      <task-list v-bind:tasks="tasks"/>
+      <task-list />
     </div>
   </div>
 </template>
@@ -9,21 +9,15 @@
 <script>
 
 
-import taskData from './database/TaskData'
+
 import TaskList from './components/TaskList.vue'
 
 export default {
   name: 'App',
   components: {
     TaskList
-  },
-  data(){
-    return{
-      newTodo :'',
-      tasks:taskData
-    }
-    
   }
+  
 }
 </script>
 
