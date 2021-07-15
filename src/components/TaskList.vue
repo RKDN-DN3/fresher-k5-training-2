@@ -11,13 +11,13 @@
                     <input type="text" class="form-control" id="searchtext"  placeholder="Search task ..." v-model="search" >
                   </div>
                   <div class="col-sm-2">
-                    <input class="form-check-input" type="radio" name="filter" id="allcheck">
+                    <input class="form-check-input" type="radio" name="filter" id="allcheck" value="1" v-model="picked">
                       <label class="form-check-label" for="allcheck">
                       All task
                       </label>
                   </div>
                   <div class="col-auto">
-                    <input class="form-check-input" type="radio" name="filter"  id="completedcheck">
+                    <input class="form-check-input" type="radio" name="filter"  id="completedcheck" value="2" v-model="picked">
                       <label class="form-check-label" for="completedcheck">
                           Completed
                       </label>
@@ -58,7 +58,8 @@ export default {
     {id:2, title:'Cook food', completed:false},
     {id:3, title:'Clean up room', completed:false},
     {id:4, title:'Clean PC', completed: false},
-    ]
+    ],
+    picked:0
     }
     
   },
@@ -69,13 +70,19 @@ export default {
     },
     addTasks(newTask){
         this.tasks=[...this.tasks,newTask]
-    },
-    
+    }
   },
+
   computed:{
     searchFilter(){
+     
       return this.tasks.filter(searchTask =>{
-        return searchTask.title.toLowerCase().includes(this.search.toLowerCase())
+        if(this.picked == "2") {
+          return searchTask.completed == true 
+        }
+        else 
+          return searchTask.title.toLowerCase().includes(this.search.toLowerCase());
+        
       })
     }
   }
