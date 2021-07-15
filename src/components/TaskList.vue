@@ -4,9 +4,34 @@
           Todo list
       </div>
       <b-form class="form-size">
-            <add-task-vue v-on:add-task="addTasks" v-bind:tasks="tasks"/>
+        <div class="row">
+          <div class="col-sm-6">
+             <form class="row align-items-center">
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" id="searchtext"  placeholder="Search task ..." v-model="search" >
+                  </div>
+                  <div class="col-sm-2">
+                    <input class="form-check-input" type="radio" name="filter" id="allcheck">
+                      <label class="form-check-label" for="allcheck">
+                      All task
+                      </label>
+                  </div>
+                  <div class="col-auto">
+                    <input class="form-check-input" type="radio" name="filter"  id="completedcheck">
+                      <label class="form-check-label" for="completedcheck">
+                          Completed
+                      </label>
+                  </div>
+            </form>
+          </div>
+          <div class="col-sm-6">
+             <add-task-vue v-on:add-task="addTasks" v-bind:tasks="tasks"/>
+          </div>
+         
+        </div>
+            <hr/>
             <ul v-if="tasks">
-                <li v-for="task in tasks" v-bind:key="task.id">
+                <li v-for="task in searchFilter" v-bind:key="task.id">
                     <task v-bind:task="task" @deleted="deleteTask" />
                 </li>
             </ul>
@@ -27,7 +52,7 @@ export default {
     },
     data(){
     return{
-      newTodo :'',
+      search :'',
       tasks: [
     {id:1, title:'Go Market', completed: false},
     {id:2, title:'Cook food', completed:false},
@@ -37,12 +62,21 @@ export default {
     }
     
   },
+  
   methods:{
     deleteTask(taskid){
       this.tasks = this.tasks.filter(task => task.id !== taskid)
     },
     addTasks(newTask){
         this.tasks=[...this.tasks,newTask]
+    },
+    
+  },
+  computed:{
+    searchFilter(){
+      return this.tasks.filter(searchTask =>{
+        return searchTask.title.toLowerCase().includes(this.search.toLowerCase())
+      })
     }
   }
 }
