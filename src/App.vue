@@ -1,16 +1,17 @@
 <template>
   <div id="app">
-    <task-list/>
+    <hello-world></hello-world>
   </div>
 </template>
 
 <script>
-import TaskList from './components/TaskList.vue'
-
+/* import TaskList from './components/TaskList.vue' */
+ import HelloWorld from './components/HelloWorld.vue'
 export default {
   name: 'App',
   components: {
-    TaskList
+    //TaskList
+    HelloWorld
   }
 }
 </script>
@@ -38,4 +39,10 @@ export default {
     list-style: none;
     padding: 20px 0 0 5px 
   }
+  button {
+    padding: 15px;
+    border: 1px solid green;
+    font-size: 18px;
+    margin: 15px;
+}
 </style>
