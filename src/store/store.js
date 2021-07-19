@@ -1,17 +1,15 @@
 import Vuex from 'vuex'
 import Vue from 'vue'
-
 import getters from './getters'
 import mutations from './mutations'
 import actions from './mutations'
-
 
 Vue.use(Vuex)
 
 export default new Vuex.Store({
     state:{
         newTitle:'',
-        searchText:'',
+        searchTet:'',
         taskData :[
             {id:1, title:'Go Market', completed: false},
             {id:2, title:'Cook food', completed:false},

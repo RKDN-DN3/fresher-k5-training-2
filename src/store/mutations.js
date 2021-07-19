@@ -4,7 +4,6 @@ export default{
   
     },
     addTask(state){
-        console.log('state',state.state)
         state.state.taskData.push({
             id: state.state.taskData.length +1,
             title: state.state.newTitle,
@@ -12,14 +11,15 @@ export default{
         })
     },
     removeTask(state, task){
-        var tasks = state.tasks
+        console.log(task)
+        var tasks= state.state.taskData
         tasks.splice(tasks.indexOf(task), 1)
-        
+       /*  state.state.taskData.filter(task => { return task.id != taskid}) */
     },
     completeTask(state, task){
         task.completed = !task.completed
     },
     clearTask(state){
-        state.newTask = ''
+        state.state.newTask = ''
     }
 }

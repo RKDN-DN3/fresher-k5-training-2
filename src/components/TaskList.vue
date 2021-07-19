@@ -32,7 +32,7 @@
             <hr/>
             <ul v-if="tasks">
                 <li v-for="task in tasks" v-bind:key="task.id">
-                    <task v-bind:task="task" @deleted="deleteTask" />
+                    <task v-bind:task="task" @deleted="deleteTask"/>
                 </li>
             </ul>
     </b-form>
@@ -42,7 +42,7 @@
 <script>
 import Task from './Task.vue';
 import AddTask from './AddTask.vue'
-
+ import {mapGetters} from 'vuex'
 export default {
     components:{
         AddTask,
@@ -53,13 +53,17 @@ export default {
         tasksdata:  this.$store.getters.tasks
         }
     },
+   
     computed:{
-        tasks(){
-           return this.tasksdata
-            
-        }
+        ...mapGetters([
+        'tasks', 
+        ])
     },
-    
+    methods:{
+        deleteTask(task){
+            this.$store.dispatch('removeTask', task)
+        }
+    }
 }
 </script>
 
