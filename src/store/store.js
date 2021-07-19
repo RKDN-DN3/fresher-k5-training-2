@@ -9,6 +9,7 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state:{
         newTask:[],
+        searchTest:'',
         taskData :[
             {id:1, title:'Go Market', completed: false},
             {id:2, title:'Cook food', completed:false},
