@@ -1,10 +1,13 @@
 export default{
     getTask(state, task){
-        state.newTask = task
+        state.state.newTitle = task
+  
     },
     addTask(state){
-        state.tasks.push({
-            body: state.newTask,
+        console.log('state',state.state)
+        state.state.taskData.push({
+            id: state.state.taskData.length +1,
+            title: state.state.newTitle,
             completed: false
         })
     },

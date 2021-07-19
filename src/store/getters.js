@@ -1,6 +1,6 @@
 export default{
-    newTask: state=> state.newTask,
+    newTitle: state=> state.newTitle,
     searchText: state =>state.searchText,
-    tasks: state=>state.tasks,
-    searchTask: state=>state.tasks.filter((tasks)=> {return tasks.completed} )
+    tasks: state=>state.taskData,
+    searchTask: state=>state.taskData.filter((tasks)=> {return tasks.completed} )
 }

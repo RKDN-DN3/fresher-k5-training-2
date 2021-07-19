@@ -6,7 +6,7 @@
       <b-form class="form-size">
         <div class="row">
           <div class="col-sm-6">
-             <form class="row align-items-center">
+             <!-- <form class="row align-items-center">
                 <div class="col-sm-5">
                     <input type="text" class="form-control" id="searchtext"  placeholder="Search task ..." v-model="search" >
                   </div>
@@ -22,10 +22,10 @@
                           Completed
                       </label>
                   </div>
-            </form>
+            </form> -->
           </div>
           <div class="col-sm-6">
-             <add-task-vue v-on:add-task="addTasks" v-bind:tasks="tasks"/>
+             <add-task />
           </div>
          
         </div>
@@ -40,17 +40,38 @@
 </template>
 
 <script>
+import Task from './Task.vue';
+import AddTask from './AddTask.vue'
 
 export default {
-
+    components:{
+        AddTask,
+        Task
+    },
+    data(){
+        return{
+        tasksdata:  this.$store.getters.tasks
+        }
+    },
     computed:{
         tasks(){
-            return this.$store.getters.tasks
+           return this.tasksdata
+            
         }
-    }
+    },
+    
 }
 </script>
 
 <style>
-
+ .size-card{
+        width: 60%;
+        margin: 50px auto;
+        
+    }
+    .form-size{
+        margin: 20px 30px;
+        align-items: center;
+        
+    }
 </style>
