@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <task-list></task-list>
+    <demo-router></demo-router>
   </div>
 </template>
 
 <script>
-import TaskList from './components/TaskList.vue'
+import DemoRouter from './components/DemoRouter.vue'
 /*  import HelloWorld from './components/HelloWorld.vue' */
 export default {
   name: 'App',
   components: {
-    TaskList
+    DemoRouter
     /* HelloWorld */
   }
 }

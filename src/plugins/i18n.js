@@ -12,7 +12,7 @@ const messages = {
         }
     },
     'vi': {
-      welcomeMsg:'Những việc cần làm',
+      listTitle:'Những việc cần làm',
       placeholder: 'Thêm công việc...',
       button: {
         btnAdd:'Thêm',
@@ -20,7 +20,7 @@ const messages = {
         }
     },
     'jp': {
-      welcomeMsg:'やる事',
+      listTitle:'やる事',
       placeholder: 'タスクの追加...',
       button: {
         btnAdd:'追加',

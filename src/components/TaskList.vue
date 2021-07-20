@@ -7,7 +7,7 @@
         </div>
         <div class="card size-card">
             <div class="card-header">
-                Todo list
+                <h4>{{$t('listTitle')}}</h4>
             </div>
             <b-form class="form-size">
                 <div class="row">
@@ -22,7 +22,7 @@
                             All task
                             </label>
                         </div> -->
-                        <div class="col-sm-2">
+                        <div class="col-sm-3">
                             <!-- <input class="form-check-input" type="radio" name="filter"  id="completedcheck" value="2" v-model="picked">
                             <label class="form-check-label" for="completedcheck">
                                 Completed
@@ -123,5 +123,9 @@ export default {
     }
     .flag span{
        font-size: 15px;
+    }
+    h4{
+        color: rgba(19, 14, 14, 0.795);
+        font-weight: 16px;
     }
 </style>
