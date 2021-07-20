@@ -6,8 +6,11 @@
         </button>
     </div>
        <div class="main">
-           
-           <span>Xin Chào thế giới</span>
+           <input type="text" :placeholder="$t('placeholder')">
+           <br>
+           <span>{{$t('welcomeMsg')}}</span>
+           <br>
+           <button>{{$t('button')}}</button>
        </div>
     </div>
 </template>
@@ -20,12 +23,14 @@ export default {
         return{
             languages: [
                 { flag: 'us', language: 'en', title: 'English' },
+                { flag: 'jp', language: 'jp', title: '日本' },
                 { flag: 'vn', language: 'vi', title: 'Tiếng Việt' }
             ]
         }
     },
      methods: {
             changeLocale(locale) {
+                console.log(locale);
                 i18n.locale = locale;
             }
         }

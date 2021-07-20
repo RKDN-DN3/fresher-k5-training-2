@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <hello-world></hello-world>
+    <task-list></task-list>
   </div>
 </template>
 
 <script>
-/* import TaskList from './components/TaskList.vue' */
- import HelloWorld from './components/HelloWorld.vue'
+import TaskList from './components/TaskList.vue'
+/*  import HelloWorld from './components/HelloWorld.vue' */
 export default {
   name: 'App',
   components: {
-    //TaskList
-    HelloWorld
+    TaskList
+    /* HelloWorld */
   }
 }
 </script>

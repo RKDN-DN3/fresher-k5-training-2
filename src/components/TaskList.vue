@@ -1,6 +1,10 @@
 <template>
     <div>
-        
+        <div class="flag">
+            <button v-for="entry in languages" :key="entry.title" @click="changeLocale(entry.language)">
+                <flag :iso="entry.flag" v-bind:squared=false /> {{entry.title}}
+            </button>
+        </div>
         <div class="card size-card">
             <div class="card-header">
                 Todo list
@@ -24,7 +28,7 @@
                                 Completed
                             </label> -->
                             <button class="col-auto btn btn-success " type="button" @click="isActive = !isActive" > 
-                                    Completed
+                                    {{$t('button.btnCompleted')}}
                                 </button>
                         </div>
                     </form>
@@ -55,6 +59,9 @@
 import Task from './Task.vue';
 import AddTask from './AddTask.vue'
  import {mapGetters} from 'vuex'
+ import i18n from '@/plugins/i18n';
+
+
 export default {
     components:{
         AddTask,
@@ -63,7 +70,12 @@ export default {
     },
     data(){
         return{
-            isActive: false
+            isActive: false,
+            languages: [
+                { flag: 'us', language: 'en', title: 'English' },
+                { flag: 'jp', language: 'jp', title: '日本' },
+                { flag: 'vn', language: 'vi', title: 'Tiếng Việt' }
+            ]
 
         }
     },
@@ -79,7 +91,10 @@ export default {
     methods:{
         deleteTask(task){
             this.$store.dispatch('removeTask', task)
-        }
+        },
+         changeLocale(locale) {
+                i18n.locale = locale;
+            }
     }
 }
 </script>
@@ -94,5 +109,19 @@ export default {
         margin: 20px 30px;
         align-items: center;
         
+    }
+    .flag{
+        width:  50%;
+        margin-left: 70%;
+    }
+    .flag button{
+        width: 130px;
+        height: 50px;
+        align-items: center;
+        border-radius:15px ;
+        margin: 0 2px;
+    }
+    .flag span{
+       font-size: 15px;
     }
 </style>
