@@ -36,7 +36,7 @@ export default {
         addTask(e){
             e.preventDefault();
             this.$store.dispatch('addTask', this.newTilet)
-            this.$store.dispatch('clearTask')
+            this.newTilet=''
         }
     }
 }

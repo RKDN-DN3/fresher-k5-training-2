@@ -79,14 +79,17 @@ export default {
 
         }
     },
-   
+   created(){
+       this.$store.dispatch('getTask');
+   },
     computed:{
         ...mapGetters([
         'tasks', 
         ]),
         ...mapGetters([
         'searchTask', 
-        ])
+        ]),
+       
     },
     methods:{
         deleteTask(task){

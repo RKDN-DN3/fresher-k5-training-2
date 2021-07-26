@@ -1,14 +1,17 @@
 export default{
-    getTask(state, task){
-        state.state.newTitle = task
-  
+    getTask(state, tasks){
+         /*state.state.newTitle = task */
+        console.log('tasks',tasks)
+        state.taskData =tasks
     },
-    addTask(state){
-        state.state.taskData.push({
-            id: state.state.taskData.length +1,
-            title: state.state.newTitle,
+    addTask(state, task){
+        console.log(task)
+        state.taskData.push({
+            id: state.taskData.length +1,
+            title: task,
             completed: false
         })
+        this.getTask
     },
     removeTask(state, task){
         console.log(task)
@@ -19,7 +22,5 @@ export default{
     completeTask(state, task){
         task.completed = !task.completed
     },
-    clearTask(state){
-        state.state.newTask = ''
-    }
+    
 }
