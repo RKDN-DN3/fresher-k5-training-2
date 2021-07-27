@@ -21,10 +21,9 @@ export default {
         markComplete(){
             this.task.completed = !this.task.completed
             console.log("status",this.task.title,this.task.completed)
+              this.$store.dispatch('completeTask', this.task)
         },
-        complete(task){
-                this.$store.dispatch('completeTask', task)
-            }
+        
     },
 }
 </script>

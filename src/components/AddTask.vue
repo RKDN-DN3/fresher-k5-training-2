@@ -31,10 +31,12 @@ export default {
     methods:{
         getTask(e){
             this.newTilet = e.target.value
+            
             this.$store.dispatch('getTask', this.newTilet)
         },
         addTask(e){
             e.preventDefault();
+
             this.$store.dispatch('addTask', this.newTilet)
             this.newTilet=''
         }

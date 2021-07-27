@@ -2,7 +2,7 @@ import axios from "axios"
  axios.defaults.baseURL = 'http://127.0.0.1:8000/api/';
 
 export default{
-    /*  getTask(context){        
+     getTask(context){        
         axios.get('tasks')
         .then(response=>{
             console.log("gettask api");
@@ -13,30 +13,30 @@ export default{
           })
     },
  
-   addTask(context, task){
-       axios.post('tasks',{
+    addTask({commit}, task){
+        
+        axios.post('tasks',{
            title:task,
            user_id:1
         })
-       .then(response => {
-
-        context.commit('addTask', response.data.data)
-        console.log("repo")
-        })
-        .catch(error => {   
-            console.log(error)
-        })
-        
-    }, */
+        commit('addTask',task)
+    }, 
  /*   editTask({commit}, task){
-        commit('editTask', task)
-    },
+        
+    },*/
     removeTask({commit}, task){
+       
+       axios.delete('tasks/'+task.id) 
         commit('removeTask', task)
     },
     completeTask({commit}, task){
-        commit('completeTask', task)
-    },*/
+        console.log("task id", task.id)
+        axios.put('tasks/'+task.id, {
+            title: task.title,
+            completed: task.completed
+        })
+        commit('completeTask', task) 
+    },
     clearTask({commit}){
         commit('clearTask')
     }  
