@@ -1,4 +1,9 @@
 export default{
+    setUserData(state, user) {
+        console.log("user", user)
+        state.userData = user;
+      },
+
     getTask(state, tasks){
          /*state.state.newTitle = task */
         state.taskData =tasks
@@ -24,5 +29,8 @@ export default{
 
         state.taskData.task = !task.completed
     },
-    
+    sendLogin(state,token){
+        console.log('token',token)
+        state.token = token
+    }
 }

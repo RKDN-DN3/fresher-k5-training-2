@@ -1,18 +1,24 @@
 <template>
   <div id="app">
-    <demo-router></demo-router>
+   
+      <ul>
+          <li >
+              <router-link to="/">HelloWorld</router-link>
+          </li>
+          <li>
+              <router-link to="/task-list">TaskList</router-link>
+          </li>
+      </ul>
+      
+      <router-view/>
   </div>
 </template>
 
 <script>
-import DemoRouter from './components/DemoRouter.vue'
-/*  import HelloWorld from './components/HelloWorld.vue' */
+
 export default {
   name: 'App',
-  components: {
-    DemoRouter
-    /* HelloWorld */
-  }
+ 
 }
 </script>
 

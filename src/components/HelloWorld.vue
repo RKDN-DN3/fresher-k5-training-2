@@ -10,7 +10,7 @@
            <br>
            <span>{{$t('welcomeMsg')}}</span>
            <br>
-           <button>{{$t('button')}}</button>
+           <button>{{$t('button.btnDemo')}}</button>
        </div>
     </div>
 </template>

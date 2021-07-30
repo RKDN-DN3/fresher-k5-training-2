@@ -21,7 +21,8 @@ export default new Vuex.Store({
             {id:2, title:'Cook food', completed:false},
             {id:3, title:'Clean up room', completed:false},
             {id:4, title:'Clean PC', completed: false} */
-        ]
+        ],
+        token: localStorage.getItem('authToken') || null
     },
      getters,
 

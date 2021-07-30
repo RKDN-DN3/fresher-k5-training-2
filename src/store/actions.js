@@ -2,6 +2,18 @@ import axios from "axios"
  axios.defaults.baseURL = 'http://127.0.0.1:8000/api/';
 
 export default{
+    getUserData({ commit }) {
+        axios
+          .get(process.env.VUE_APP_API_URL + "user")
+          .then(response => {
+            commit("setUserData", response.data);
+          })
+          .catch(() => {
+            localStorage.removeItem("authToken");
+          });
+      },
+
+      
      getTask(context){        
         axios.get('tasks')
         .then(response=>{
@@ -39,5 +51,19 @@ export default{
     },
     clearTask({commit}){
         commit('clearTask')
-    }  
+    }, 
+
+    sendLogin({commit}, data){
+     axios.post('login',{
+        email: data.email,
+        password: data.password,
+     }).then(response=>{
+        const token = response.data.token
+        localStorage.setItem("authToken", token)
+        commit('sendLogin', token)
+     }).catch(error => {
+        console.log(error)
+      })
+        
+    }
 }
