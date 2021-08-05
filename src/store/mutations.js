@@ -37,7 +37,7 @@ export default{
         state.user = user;
     },
 
-    signUp(dataUser){
-        console.log(dataUser)
+    signUp(state, dataUser){
+        state.user = dataUser
     }
 }

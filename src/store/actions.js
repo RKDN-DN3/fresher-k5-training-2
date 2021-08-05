@@ -69,19 +69,28 @@ export default {
       });
   },
 
-  register(userForm) {
+  register({commit},userForm) {
     console.log("user", userForm);
 
     axios
       .post(
-        'register',userForm,
+        'register',
+        {
+          name:userForm.name,
+          email: userForm.email,
+          password: userForm.password,
+          phone: userForm.phone
+        },
         {
           headers: {
             "Content-Type": "multipart/form-data",
           },
         }
       )
-      .then((response) => response.message)
+      .then((response) => {
+        response.message
+        commit('register',userForm)
+      })
       .catch((error) => {
         console.log(error);
       });
