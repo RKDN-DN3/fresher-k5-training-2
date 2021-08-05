@@ -1,25 +1,21 @@
+import Vue from 'vue';
+import Router from 'vue-router';
+
 import HelloWorld from "../components/HelloWorld";
 import TaskList from "../components/TaskList";
 import login from "../components/Auth/Login";
+import signUp from "../components/SignUp";
 
-/* function requireAuth (to, from, next) {
-    if (!auth.loggedIn()) {
-      next({
-        path: '/login',
-        query: { redirect: to.fullPath }
-      })
-    } else {
-      next()
-    }
-  } */
+Vue.use(Router);
 
 const routes = [
   {
     path: "/login",
     component: login,
-    meta: {
-      requiresVisitor: true,
-    },
+  },
+  {
+    path: "/signup",
+    component: signUp,
   },
   {
     path: "/",
@@ -30,11 +26,22 @@ const routes = [
     path: "/task-list",
     name: "TaskList",
     component: TaskList,
-    meta: {
-      requiresAuth: true,
-    },
-    /*  beforeEnter: requireAuth */
   },
 ];
+ const router = new Router({
+  mode: 'history',
+  routes
+})
 
-export default routes;
+router.beforeEach((to, from, next) => {
+  const publicPages = ['/login', '/signup'];
+  const authRequired = !publicPages.includes(to.path);
+  const loggedIn = localStorage.getItem('authToken');
+
+  if (authRequired && !loggedIn) {
+    return next('/login');
+  }
+  next();
+})
+
+export default router

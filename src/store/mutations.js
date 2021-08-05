@@ -29,8 +29,15 @@ export default{
 
         state.taskData.task = !task.completed
     },
-    sendLogin(state,token){
+    setToken(state,token){
         console.log('token',token)
         state.token = token
+    },
+    setUser(state, user){
+        state.user = user;
+    },
+
+    signUp(dataUser){
+        console.log(dataUser)
     }
 }

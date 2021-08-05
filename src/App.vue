@@ -1,7 +1,7 @@
 <template>
   <div id="app">
    
-      <ul>
+     <!--  <ul>
           <li >
               <router-link to="/">HelloWorld</router-link>
           </li>
@@ -9,7 +9,7 @@
               <router-link to="/task-list">TaskList</router-link>
           </li>
       </ul>
-      
+       -->
       <router-view/>
   </div>
 </template>

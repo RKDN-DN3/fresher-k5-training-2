@@ -11,4 +11,7 @@ export default {
   loggedIn: (state) => {
     return state.token !== null;
   },
+  getUser: (state)=>{
+    return state.user
+  }
 };
