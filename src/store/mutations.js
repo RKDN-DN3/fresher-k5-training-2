@@ -39,5 +39,8 @@ export default{
 
     signUp(state, dataUser){
         state.user = dataUser
+    },
+    setEmail(state, email){
+        state.emailForgot= email
     }
 }

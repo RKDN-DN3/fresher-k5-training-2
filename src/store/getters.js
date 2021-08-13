@@ -13,5 +13,9 @@ export default {
   },
   getUser: (state)=>{
     return state.user
-  }
+  },
+  getEmailForgot:(state)=>{
+    return state.emailForgot
+  },
+  isAuthenticated: state => !!state.token,
 };

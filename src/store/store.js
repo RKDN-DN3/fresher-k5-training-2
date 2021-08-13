@@ -23,7 +23,8 @@ export default new Vuex.Store({
             {id:4, title:'Clean PC', completed: false} */
         ],
         token: localStorage.getItem('authToken') || null,
-        user: ''
+        user: '',
+        emailForgot:''
     },
      getters,
 

@@ -7,7 +7,8 @@ import i18n from "./plugins/i18n";
 import FlagIcon from "vue-flag-icon";
 import router from "./router/index";
 import "bootstrap/dist/css/bootstrap.css";
-import Vuelidate from 'vuelidate'
+import Vuelidate from 'vuelidate';
+import axios from "axios"
 /* import 'bootstrap-vue/dist/bootstrap-vue.css' */
 
 Vue.config.productionTip = false;
@@ -18,7 +19,7 @@ Vue.use(VueRouter);
 Vue.use(FlagIcon);
 Vue.use(Vuelidate)
 
-/* axios.defaults.headers.common['Authorization'] = `Bearer ${store.state.token}`; */
+axios.defaults.headers.common['Authorization'] = `Bearer ${store.state.token}`; 
 
 new Vue({
   render: (h) => h(App),

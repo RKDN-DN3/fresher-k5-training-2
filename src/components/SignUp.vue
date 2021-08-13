@@ -129,6 +129,7 @@ import {
   minLength,
   sameAs,
 } from "vuelidate/lib/validators";
+
 export default {
   data: function() {
     return {
@@ -175,13 +176,13 @@ export default {
         return
       }
       else{
-        this.$store.dispatch('register', this.userForm)
+        this.$store.dispatch('register', this.userForm).then(() => {
+        this.$router.push('/login');
+        })   
       }
-      console.log(this.userForm)
-      
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style></style>

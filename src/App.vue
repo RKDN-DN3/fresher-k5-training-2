@@ -1,24 +1,20 @@
 <template>
   <div id="app">
-   
-     <!--  <ul>
-          <li >
-              <router-link to="/">HelloWorld</router-link>
-          </li>
-          <li>
-              <router-link to="/task-list">TaskList</router-link>
-          </li>
-      </ul>
-       -->
+ 
+      <navbar></navbar>
       <router-view/>
   </div>
 </template>
 
 <script>
 
+import Navbar from './components/Header.vue'
 export default {
   name: 'App',
- 
+ components:{
+   Navbar
+ },
+
 }
 </script>
 
@@ -28,7 +24,6 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
-  margin-top: 60px;
 }
   .wrapper{
     width: 100%;
@@ -51,4 +46,5 @@ export default {
     font-size: 18px;
     margin: 15px;
 }
+
 </style>

@@ -1,5 +1,8 @@
 <template>
     <div>
+        <!-- <div class="logout" style="display: inline-flex; margin-left: 82%; margin-bottom: 15px">
+              <button class="btn-logout"  type="button" value="Logout" @click="logout">LogOut</button>
+        </div> -->
         <div class="flag">
             <button v-for="entry in languages" :key="entry.title" @click="changeLocale(entry.language)">
                 <flag :iso="entry.flag" v-bind:squared=false /> {{entry.title}}
@@ -80,13 +83,16 @@ export default {
         }
     },
    created(){
-       this.$store.dispatch('getTask');
+        if (this.$store.getters.isLoggedIn == false) {
+            this.$router.push('/login');
+        }
+        else{
+            this.$store.dispatch('getTask');
+        }
    },
     computed:{
         ...mapGetters([
         'tasks', 
-        ]),
-        ...mapGetters([
         'searchTask', 
         ]),
        
@@ -97,7 +103,12 @@ export default {
         },
          changeLocale(locale) {
                 i18n.locale = locale;
-            }
+        },
+
+        logout(){
+            this.$store.dispatch('logout')
+            this.$router.push('/login')
+        }
     }
 }
 </script>
@@ -115,7 +126,8 @@ export default {
     }
     .flag{
         width:  50%;
-        margin-left: 70%;
+        margin-left: 50%;
+        padding-left: 15%;
     }
     .flag button{
         width: 130px;
@@ -130,5 +142,12 @@ export default {
     h4{
         color: rgba(19, 14, 14, 0.795);
         font-weight: 16px;
+    }
+    .btn-logout{
+        background-color: #c1970f7a;
+        height: 50px;
+        align-items: center;
+        border-radius:15px ;
+        margin: 0 2px;
     }
 </style>

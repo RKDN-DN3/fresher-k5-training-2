@@ -2,7 +2,18 @@ import axios from "axios";
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
 
+const isProduction = process.env.NODE_ENV === 'production';
 export default {
+  
+  initialize({commit}){
+    const token = localStorage.getItem('authToken');
+    if(isProduction&&token){
+      commit("removeToken")
+    }
+    if (!isProduction && token) {
+      localStorage.removeItem("authToken")
+    }
+  },
   getUserData({ commit }) {
     axios
       .get(process.env.VUE_APP_API_URL + "user")
@@ -27,8 +38,7 @@ export default {
 
   addTask({ commit }, task) {
     axios.post("tasks", {
-      title: task,
-      user_id: 1,
+      title: task
     });
     commit("addTask", task);
   },
@@ -66,33 +76,53 @@ export default {
       })
       .catch((error) => {
         console.log(error);
+        alert('Đăng nhập thất bại')
       });
   },
 
   register({commit},userForm) {
     console.log("user", userForm);
-
-    axios
-      .post(
-        'register',
-        {
-          name:userForm.name,
-          email: userForm.email,
-          password: userForm.password,
-          phone: userForm.phone
-        },
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      )
-      .then((response) => {
-        response.message
-        commit('register',userForm)
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    return(
+      axios
+        .post(
+          'register',
+          {
+            name:userForm.name,
+            email: userForm.email,
+            password: userForm.password,
+            phone: userForm.phone
+          }
+        )
+        .then((response) => {
+          response.message
+          
+          commit('register',userForm)
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+    )
   },
+  logout({commit}){
+    axios.post("logout")
+    .then(()=>{
+      commit('setUser', null)
+      localStorage.removeItem("authToken")
+    })
+  },
+  
+  forgotPassword({commit}, email){
+    axios.post("reset-password",{'email':email})
+    .then((response)=>{
+      commit('setEmail',email)
+      response.status
+    })
+  },
+  resetpassword({commit}, data){
+    axios.post('reset',data)
+    .then((response)=>{
+      commit('',data)
+      alert(response.message)
+    })
+  }
 };

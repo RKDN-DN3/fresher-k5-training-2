@@ -1,6 +1,6 @@
 <template>
    <div>
-      <div>
+      <!-- <div>
         <button v-for="entry in languages" :key="entry.title" @click="changeLocale(entry.language)">
             <flag :iso="entry.flag" v-bind:squared=false /> {{entry.title}}
         </button>
@@ -11,7 +11,7 @@
            <span>{{$t('welcomeMsg')}}</span>
            <br>
            <button>{{$t('button.btnDemo')}}</button>
-       </div>
+       </div> -->
     </div>
 </template>
 

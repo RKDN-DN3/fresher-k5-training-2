@@ -28,10 +28,13 @@
             />
            
           </div>
+          <div>
           <button type="submit" class="btn btn-primary">
             Login
           </button>
            <p v-if="error" class="error">Bad login information</p>
+            <a class="reset-pwd" href="/forgot-password">Forgot your password</a>
+          </div>
         </form>
       </div>
     </div>
@@ -55,7 +58,8 @@ export default {
             console.log("debug login")
             this.$store.dispatch('sendLogin', this.details)
             .then(() => {
-          this.$router.push({ name: 'TaskList' })
+              alert('Đăng nhập thành công')
+               this.$router.push({ name: 'TaskList' })   
         })
         }
     }
@@ -67,5 +71,8 @@ export default {
         width: 40%;
         margin: 70px auto;
         
+    }
+    .reset-pwd{
+      margin-left: 20px;
     }
 </style>
