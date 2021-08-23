@@ -2,10 +2,11 @@ import axios from "axios";
 
 axios.defaults.baseURL = "http://127.0.0.1:8000/api/";
 
-const isProduction = process.env.NODE_ENV === 'production';
+ //const isProduction = process.env.NODE_ENV === 'production'; 
 export default {
   
-  initialize({commit}){
+  /* initialize({commit}){
+    console.log("initialize")
     const token = localStorage.getItem('authToken');
     if(isProduction&&token){
       commit("removeToken")
@@ -13,8 +14,9 @@ export default {
     if (!isProduction && token) {
       localStorage.removeItem("authToken")
     }
-  },
+  }, */
   getUserData({ commit }) {
+    console.log("getUserData")
     axios
       .get(process.env.VUE_APP_API_URL + "user")
       .then((response) => {
@@ -115,7 +117,10 @@ export default {
     axios.post("reset-password",{'email':email})
     .then((response)=>{
       commit('setEmail',email)
-      response.status
+      alert( response.status)
+    })
+    .catch((error)=>{
+      alert("Đã có lỗi: ", error)
     })
   },
   resetpassword({commit}, data){

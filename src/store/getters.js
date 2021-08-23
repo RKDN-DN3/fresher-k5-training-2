@@ -9,7 +9,7 @@ export default {
 
   /*-------------------------------------------*/
   loggedIn: (state) => {
-    return state.token !== null;
+    return !! state.token ;
   },
   getUser: (state)=>{
     return state.user

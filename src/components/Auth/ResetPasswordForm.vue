@@ -10,6 +10,17 @@
             </ul> -->
             <form autocomplete="off" @submit.prevent="resetPassword">
               <div class="form-group">
+                <label for="email">E-mail</label>
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  placeholder="user@example.com"
+                  v-model="email"
+                  required
+                />
+              </div>
+              <div class="form-group">
                   <label for="password">Password</label>
                   <input type="password" id="password" class="form-control" placeholder="" v-model="Pwd.password" required>
               </div>
@@ -32,6 +43,7 @@ export default {
     data() {
       return {
         Pwd:{
+        email: null,
         token: this.$route.params.token,
         password: null,
         password_confirm: null,
