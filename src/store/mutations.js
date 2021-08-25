@@ -1,24 +1,23 @@
 export default{
     setUserData(state, user) {
-        console.log("user", user)
+
         state.userData = user;
       },
 
-    getTask(state, tasks){
-         /*state.state.newTitle = task */
-        state.taskData =tasks
+    getTask(state, data){
+ 
+        state.taskAll =data.tasks
+        state.taskData =data.data
     },
  
     addTask(state, task){
-        /* commit('addTask', task) */
-        console.log('add task debug',task),
-        
         state.taskData.push({
-            id: state.taskData.length +1,
+            id: state.taskAll[state.taskAll.length-1].id+1,
             title: task,
             completed: false
         })
     },
+
      removeTask(state, task){
         console.log('task',task)
         var tasks= state.taskData
@@ -30,10 +29,11 @@ export default{
         state.taskData.task = !task.completed
     },
     setToken(state,token){
-        console.log('token',token)
         state.token = token
     },
     setUser(state, user){
+        
+        localStorage.setItem('user',user );
         state.user = user;
     },
 

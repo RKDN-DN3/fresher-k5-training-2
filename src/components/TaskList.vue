@@ -105,10 +105,7 @@ export default {
                 i18n.locale = locale;
         },
 
-        logout(){
-            this.$store.dispatch('logout')
-            this.$router.push('/login')
-        }
+      
     }
 }
 </script>

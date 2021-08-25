@@ -30,8 +30,7 @@ export default {
     axios
       .get("tasks")
       .then((response) => {
-        console.log("gettask api");
-        context.commit("getTask", response.data.data);
+        context.commit("getTask", response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -40,7 +39,8 @@ export default {
 
   addTask({ commit }, task) {
     axios.post("tasks", {
-      title: task
+      title: task,
+      completed: 0
     });
     commit("addTask", task);
   },
@@ -75,6 +75,7 @@ export default {
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         commit("setToken", token);
         commit("setUser", response.data.user);
+        alert('Đăng nhập thành công')
       })
       .catch((error) => {
         console.log(error);
@@ -106,10 +107,14 @@ export default {
     )
   },
   logout({commit}){
+    
     axios.post("logout")
     .then(()=>{
       commit('setUser', null)
+      commit('setToken', null)
       localStorage.removeItem("authToken")
+      localStorage.removeItem("user")
+      alert('Đăng xuất tài khoản thành công')
     })
   },
   

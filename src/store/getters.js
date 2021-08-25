@@ -9,10 +9,11 @@ export default {
 
   /*-------------------------------------------*/
   loggedIn: (state) => {
-    return !! state.token ;
+    console.log('loggedIn',state.token)
+    return state.token !== null;
   },
   getUser: (state)=>{
-    return state.user
+    return state.user.name
   },
   getEmailForgot:(state)=>{
     return state.emailForgot

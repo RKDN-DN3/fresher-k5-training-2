@@ -42,9 +42,6 @@
 </template>
 
 <script>
-import VueRouter from "vue-router";
-const { isNavigationFailure, NavigationFailureType } = VueRouter;
-
 export default {
   data: function() {
     return {
@@ -57,16 +54,9 @@ export default {
   },
   methods: {
     login() {
-      console.log("debug login");
-      this.$store.dispatch("sendLogin", this.details).then(() => {
-        alert("Đăng nhập thành công");
-        this.$router.push({ name: "TaskList" }).catch((failure) => {
-          if (isNavigationFailure(failure, NavigationFailureType.redirected)) {
-            failure.to.path // '/admin'
-             failure.from.path // '/'
-          }
-        });
-      });
+     
+      this.$store.dispatch("sendLogin", this.details).then(() => this.$router.push('/task-list')).catch(console);
+
     },
   },
 };

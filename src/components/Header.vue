@@ -2,10 +2,10 @@
   <div class="header">
     <nav class="navbar navbar-dark bg-dark">
       <div class="container-fluid">
-        <a class="navbar-brand">TODO APP</a>
+        <a class="navbar-brand" href="/">TODO APP</a>
         <form class="d-flex">
           <div v-if="loggedIn" style="color: #00000; display: inline">
-            <b>Xin chào {{ getUser.name }}</b>
+            <b>Xin chào {{getUser}}</b>
             <button class="btn btn-outline-danger" type="button" value="Logout" style="margin-left: 5px" @click="logout" >LogOut</button>
           </div>
           <div v-else>
@@ -27,10 +27,11 @@ export default {
   methods: {
     
     logout() {
-      this.$store.dispatch("logout");
-      this.$router.push("/login");
+      this.$store.dispatch("logout").then(()=>this.$router.replace('/login'));
+      
     },
   },
+   
 };
 </script>
 

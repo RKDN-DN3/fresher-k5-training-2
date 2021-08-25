@@ -7,14 +7,14 @@ import login from "../components/Auth/Login";
 import ForgotPassword from "../components/Auth/ForgotPassword";
 import ResetPasswordForm from "../components/Auth/ResetPasswordForm";
 import signUp from "../components/SignUp";
-import store from "../store/store";
+//import store from "../store/store";
 
 Vue.use(Router);
-const requireAuthenticated = (to, from, next) => {
+/* const requireAuthenticated = (to, from, next) => {
   const checkLogin = store.getters["loggedIn"];
-  console.log("check", checkLogin);
+  //console.log("check", checkLogin);
   if (!checkLogin) {
-    next({ path: "/login", query: { redirect: to.fullPath } });
+    next('/login');
   } else {
     next();
   }
@@ -22,15 +22,15 @@ const requireAuthenticated = (to, from, next) => {
 
 const requireUnauthenticated = (to, from, next) => {
 
-  if (store.getters["loggedIn"]) {
-    next("/");
-  } else {
+  if (!store.getters["loggedIn"]) {
     next();
+  } else {
+    next({path: "/"});
   }
-};
-const redirectLogout = (to, from, next) => {
+};  */
+/* const redirectLogout = (to, from, next) => {
   store.dispatch("logout").then(() => next("/login"));
-};
+}; */
 const routes = [
   {
     path: "/forgot-password",
@@ -51,16 +51,17 @@ const routes = [
   {
     path: "/login",
     component: login,
-    beforeEnter: requireUnauthenticated,
+   // beforeEnter: requireUnauthenticated,
+    
   },
   {
     path: "/signup",
     component: signUp,
   },
-  {
+ /*  {
     path: "/logout",
     beforeEnter: redirectLogout,
-  },
+  }, */
   {
     path: "/",
     name: "HelloWorld",
@@ -70,7 +71,7 @@ const routes = [
     path: "/task-list",
     name: "TaskList",
     component: TaskList,
-    beforeEnter: requireAuthenticated,
+ //   beforeEnter: requireAuthenticated,
   },
 ];
 const router = new Router({
@@ -78,16 +79,16 @@ const router = new Router({
   routes,
 });
 
-/* router.beforeEach((to, from, next) => {
-  const publicPages = ['/login', '/signup','/','/forgot-password','/reset-password/:token'];
+ router.beforeEach((to, from, next) => {
+  const privatePages = ['/task-list'];
   
-  const authRequired = !publicPages.includes(to.path);
+  const authRequired = privatePages.includes(to.path);
   const loggedIn = localStorage.getItem('authToken');
 
   if (authRequired && !loggedIn) {
     return next('/login');
   }
   next();
-})  */
+})  
 
 export default router;
