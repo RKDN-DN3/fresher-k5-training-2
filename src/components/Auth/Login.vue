@@ -55,7 +55,7 @@ export default {
   methods: {
     login() {
      
-      this.$store.dispatch("sendLogin", this.details).then(() => this.$router.push('/task-list')).catch(console);
+      this.$store.dispatch("sendLogin", this.details).then(() => this.$router.push('/')).catch(console);
 
     },
   },

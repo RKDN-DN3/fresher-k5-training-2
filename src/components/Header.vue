@@ -3,9 +3,8 @@
     <nav class="navbar navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">TODO APP</a>
-        <div
-          class="collapses navbar-collapses">
-          <div class=" navbar-nav" style="position: relative; left: 30px;">
+        <div class="collapses navbar-collapses">
+          <div class=" navbar-nav" style="position: relative; left: 30px" v-show="loggedIn">
             <router-link to="/task-list" class="nav-link"
               >Task List</router-link
             >
