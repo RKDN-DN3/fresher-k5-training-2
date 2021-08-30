@@ -1,11 +1,10 @@
 <template>
   <div class="login mt-5">
-    <div class="card size-card-login">
-      <div class="card-header">
-        Login
-      </div>
-      <div class="card-body">
+    <div class="size-card-login">
+      
+      <div class="card-body" style="padding: 15px">
         <form @submit.prevent="login">
+          <h2 style="text-align: center; font-family: ui-rounded;">LOGIN </h2>
           <div class="form-group">
             <label for="email">Email address</label>
             <input
@@ -26,7 +25,7 @@
               v-model="details.password"
             />
           </div>
-          <div>
+          <div class="margin">
             <button type="submit" class="btn btn-primary">
               Login
             </button>
@@ -54,9 +53,10 @@ export default {
   },
   methods: {
     login() {
-     
-      this.$store.dispatch("sendLogin", this.details).then(() => this.$router.push('/')).catch(console);
-
+      this.$store
+        .dispatch("sendLogin", this.details)
+        .then(() => this.$router.push("/task-list"))
+        .catch(console);
     },
   },
 };
@@ -64,10 +64,15 @@ export default {
 
 <style>
 .size-card-login {
-  width: 40%;
+  background-color: #e8e8e8;
+  width: 35%;
   margin: 70px auto;
+  border-radius: 15px;
 }
 .reset-pwd {
   margin-left: 20px;
+}
+.margin{
+  margin-top: 10px;
 }
 </style>

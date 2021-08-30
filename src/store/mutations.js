@@ -11,6 +11,8 @@ export default{
     },
  
     addTask(state, task){
+        console.log("taskAll", state.taskAll)
+        console.log('End ID', state.taskAll[state.taskAll.length-1])
         state.taskData.push({
             id: state.taskAll[state.taskAll.length-1].id+1,
             title: task,

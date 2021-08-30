@@ -38,11 +38,18 @@ export default {
   },
 
   addTask({ commit }, task) {
+    
     axios.post("tasks", {
       title: task,
       completed: 0
-    });
-    commit("addTask", task);
+    })
+    .then(()=> {
+      commit("addTask", task);
+    })
+    .catch((error)=>{
+      alert("thêm task không thành công", error)
+    })
+    
   },
   /*   editTask({commit}, task){
         

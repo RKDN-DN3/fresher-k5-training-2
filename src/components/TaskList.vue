@@ -1,8 +1,5 @@
 <template>
     <div>
-        <!-- <div class="logout" style="display: inline-flex; margin-left: 82%; margin-bottom: 15px">
-              <button class="btn-logout"  type="button" value="Logout" @click="logout">LogOut</button>
-        </div> -->
         <div class="flag">
             <button v-for="entry in languages" :key="entry.title" @click="changeLocale(entry.language)">
                 <flag :iso="entry.flag" v-bind:squared=false /> {{entry.title}}
@@ -14,7 +11,7 @@
             </div>
             <b-form class="form-size">
                 <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-5">
                     <form class="row align-items-center">
                         <!-- <div class="col-sm-5">
                             <input type="text" class="form-control" id="searchtext"  placeholder="Search task ..." v-model="search" >
@@ -36,7 +33,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="col-sm-6">
+                <div class="col-sm-7">
                     <add-task />
                 </div>
                 

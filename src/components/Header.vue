@@ -1,5 +1,41 @@
 <template>
-  <div class="header">
+<div>
+  <b-navbar type="dark" variant="dark">
+    <b-navbar-nav>
+      <b-nav-item href="/">TODO APP</b-nav-item>
+
+      <!-- Navbar dropdowns -->
+      <b-nav-item-dropdown text="Lang" right>
+        <b-dropdown-item href="#">EN</b-dropdown-item>
+        <b-dropdown-item href="#">JA</b-dropdown-item>
+        <b-dropdown-item href="#">VI</b-dropdown-item>
+      </b-nav-item-dropdown>
+    </b-navbar-nav>
+     <form class="d-flex"  style="position: absolute; right: 15px">
+            <div v-if="loggedIn" style="color: #00000; display: inline">
+              <b>Xin chào {{ getUser }}</b>
+              <button
+                class="btn btn-outline-danger"
+                type="button"
+                value="Logout"
+                style="margin-left: 5px"
+                @click="logout"
+              >
+                LogOut
+              </button>
+            </div>
+            <div v-else>
+              <button class="btn btn-outline-success btn-header" type="button">
+                <a class="nav" href="/login">Login</a>
+              </button>
+              <button class="btn btn-outline-warning btn-header" type="button">
+                <a class="nav" href="/signup">Register</a>
+              </button>
+            </div>
+          </form>
+  </b-navbar>
+</div>
+ <!--  <div class="header">
     <nav class="navbar navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">TODO APP</a>
@@ -23,10 +59,10 @@
               </button>
             </div>
             <div v-else>
-              <button class="btn btn-outline-success" type="button">
+              <button class="btn btn-outline-success btn-header" type="button">
                 <a class="nav" href="/login">Login</a>
               </button>
-              <button class="btn btn-outline-warning" type="button">
+              <button class="btn btn-outline-warning btn-header" type="button">
                 <a class="nav" href="/signup">Register</a>
               </button>
             </div>
@@ -34,7 +70,7 @@
         </div>
       </div>
     </nav>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -72,5 +108,8 @@ b {
   flex-basis: 50%;
   flex-grow: 1;
   align-items: center;
+}
+.btn-header{
+  margin-right: 5px;
 }
 </style>
