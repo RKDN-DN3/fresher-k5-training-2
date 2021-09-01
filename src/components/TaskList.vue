@@ -5,7 +5,7 @@
                 <flag :iso="entry.flag" v-bind:squared=false /> {{entry.title}}
             </button>
         </div>
-        <div class="card size-card">
+        <div class="size-card">
             <div class="card-header">
                 <h4>{{$t('listTitle')}}</h4>
             </div>
@@ -96,7 +96,11 @@ export default {
     },
     methods:{
         deleteTask(task){
-            this.$store.dispatch('removeTask', task)
+            var result = confirm("Bạn có muốn xóa task này không?");
+            if(result){
+                this.$store.dispatch('removeTask', task)
+            }
+            
         },
          changeLocale(locale) {
                 i18n.locale = locale;
@@ -109,6 +113,9 @@ export default {
 
 <style>
  .size-card{
+        background-color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.125);
+        border-radius: 1.25rem;
         width: 60%;
         margin: 50px auto;
         

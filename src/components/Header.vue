@@ -1,11 +1,11 @@
 <template>
-<div>
+ <!--<div>
   <b-navbar type="dark" variant="dark">
     <b-navbar-nav>
-      <b-nav-item href="/">TODO APP</b-nav-item>
+      <b-nav-item href="/">TODO APP</b-nav-item> -->
 
       <!-- Navbar dropdowns -->
-      <b-nav-item-dropdown text="Lang" right>
+      <!-- <b-nav-item-dropdown text="Lang" right>
         <b-dropdown-item href="#">EN</b-dropdown-item>
         <b-dropdown-item href="#">JA</b-dropdown-item>
         <b-dropdown-item href="#">VI</b-dropdown-item>
@@ -33,9 +33,9 @@
               </button>
             </div>
           </form>
-  </b-navbar>
-</div>
- <!--  <div class="header">
+  </b-navbar> 
+</div>-->
+  <div class="header">
     <nav class="navbar navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">TODO APP</a>
@@ -70,7 +70,7 @@
         </div>
       </div>
     </nav>
-  </div> -->
+  </div>
 </template>
 
 <script>

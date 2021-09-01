@@ -88,7 +88,10 @@ const router = new Router({
   if (authRequired && !loggedIn) {
     return next('/login');
   }
+  else{
+    console.log(next())
   next();
-})  
+  }
+}) 
 
 export default router;

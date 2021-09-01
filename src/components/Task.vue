@@ -4,11 +4,12 @@
       <!--  <input type="checkbox" :id="task.id" v-model="task.completed" class="checkcomplete"/> -->
       <P v-on:click="markComplete">{{ task.title }}</P>
     </div>
-    <div class="col-auto">
+    <div class="col-auto" >
       <b-button
         pill
         variant="outline-success"
         type="button"
+        style="margin-right: 2.5px"
         v-on:click="markComplete"
       >
         <b-icon icon="check"></b-icon>

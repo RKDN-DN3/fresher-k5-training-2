@@ -55,8 +55,13 @@ export default {
         
     },*/
   removeTask({ commit }, task) {
-    axios.delete("tasks/" + task.id);
-    commit("removeTask", task);
+    axios.delete("tasks/" + task.id)
+    .then(()=>{
+      commit("removeTask", task);
+      alert("Xóa task thành công ")
+    })
+    .catch((error)=> alert("Xóa task không thành công", error))
+    
   },
   completeTask({ commit }, task) {
     console.log("task id", task.id);
@@ -82,7 +87,6 @@ export default {
         axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
         commit("setToken", token);
         commit("setUser", response.data.user);
-        alert('Đăng nhập thành công')
       })
       .catch((error) => {
         console.log(error);

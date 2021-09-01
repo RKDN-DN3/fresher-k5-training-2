@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import VueRouter from 'vue-router'
+const { isNavigationFailure, NavigationFailureType } = VueRouter
 export default {
   data: function() {
     return {
@@ -53,10 +55,13 @@ export default {
   },
   methods: {
     login() {
-      this.$store
-        .dispatch("sendLogin", this.details)
-        .then(() => this.$router.push("/task-list"))
-        .catch(console);
+      this.$store.dispatch("sendLogin", this.details)
+      this.$router.push("/task-list")
+      .catch((e) => {
+    if (!isNavigationFailure(e, NavigationFailureType.redirected)) {
+        Promise.reject(e)
+    }
+  })   
     },
   },
 };
