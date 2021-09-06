@@ -11,9 +11,11 @@
               type="email"
               class="form-control"
               id="email"
+              name="email"
               v-model="details.email"
               placeholder="Enter email"
             />
+            <span class="error-message" v-if="emailIsInvalid"> Invalid Email</span>
           </div>
           <div class="form-group">
             <label for="password">Password</label>
@@ -53,6 +55,15 @@ export default {
       error: false,
     };
   },
+  computed:{
+     emailIsInvalid() {
+      const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      const emailRegex = new RegExp(re)
+      
+      return this.details.email && !emailRegex.test(this.details.email)
+    }
+  },
+
   methods: {
     login() {
       this.$store.dispatch("sendLogin", this.details)
